@@ -11,18 +11,18 @@ export class ListComponent {
   public characterList: Character[] = [];
 
   @Output()
-  public onDeleteChar = new EventEmitter<number>();
+  public onDeleteChar = new EventEmitter<string>();
 
   character: Character = {
     name: '',
     power: 0
   }
 
-  onDeleteCharacter(index: number): void {
+  onDeleteCharacter(id?: string): void {
 
-    this.onDeleteChar.emit(index);
+    if (!id) return;
+    this.onDeleteChar.emit(id);
 
-    console.log({ index });
   }
 
 }
